@@ -8,17 +8,30 @@
     "vscode": "^1.102.0"
   },
   "categories": [
-    "Other"
+    "Linters"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "code-standard-checker.helloWorld",
-        "title": "Hello World"
+        "command": "codeStandard.checkLineLength",
+        "title": "라인 길이 검사"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "A회사 개발표준",
+      "properties": {
+        "codeStandard.maxLineLength": {
+          "type": "number",
+          "default": 120,
+          "description": "최대 라인 길이"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
