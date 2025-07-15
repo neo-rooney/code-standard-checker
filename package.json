@@ -1,5 +1,6 @@
 {
   "name": "code-standard-checker",
+  "publisher": "cheolhun",
   "displayName": "code-standard-checker",
   "description": "코딩 표준을 실시간으로 검사하는 Extension",
   "version": "0.0.1",
