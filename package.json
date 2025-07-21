@@ -10,10 +10,7 @@
   "categories": [
     "Linters"
   ],
-  "activationEvents": [
-    "onLanguage:javascript",
-    "onLanguage:typescript"
-  ],
+  "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -21,17 +18,7 @@
         "command": "codeStandard.checkLineLength",
         "title": "라인 길이 검사"
       }
-    ],
-    "configuration": {
-      "title": "A회사 개발표준",
-      "properties": {
-        "codeStandard.maxLineLength": {
-          "type": "number",
-          "default": 120,
-          "description": "최대 라인 길이"
-        }
-      }
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
