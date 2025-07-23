@@ -14,17 +14,26 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // 활성 에디터 정보 출력 (테스트)
-    console.log("✅ 활성 에디터 발견!");
     const document = activeEditor.document;
     const text = document.getText();
 
-    console.log("📝 전체 텍스트 길이:", text.length, "문자");
-
+    // 텍스트를 라인별로 분할
     const lines = text.split("\n");
-    console.log("📝 분할된 라인 수:", lines.length);
+
+    // 설정값 읽기
+    const config = vscode.workspace.getConfiguration("codeStandard");
+    const maxLineLength = config.get<number>("maxLineLength", 120);
+    console.log("📐 최대 라인 길이 설정값:", maxLineLength);
 
     lines.forEach((line, lineNumber) => {
-      console.log(`📏 라인 ${lineNumber + 1}: "${line}" (${line.length}자)`);
+      if (line.length > maxLineLength) {
+        const message = `라인 ${lineNumber + 1}: ${
+          line.length
+        }자 초과 (최대: ${maxLineLength}자)`;
+        console.log(`❌ ${message}`);
+      } else {
+        console.log(`✅ 라인 ${lineNumber + 1}: 길이 OK`);
+      }
     });
 
     console.log("📏 라인 길이 검사 명령어가 실행되었습니다!");
